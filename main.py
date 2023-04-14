@@ -127,7 +127,7 @@ def main():
     # TODO: Run the program 5 times for each offloading mode, and record the total execution time
     #   Compute the mean and standard deviation of the execution times
     #   Hint: store the results in a pandas DataFrame, use previous labs as a reference
-    d = {'mode': [None, 'process1', 'process2', 'both'],
+    d = {'mode': ['None', 'process1', 'process2', 'both'],
          'total_exec_time': [],
          'mean': [],
          'std_dev': []}
@@ -138,7 +138,10 @@ def main():
         for i in range(0,5):
             print('Trial {}'.format(i))
             start = time.perf_counter()
-            run(mode)
+            if mode == 'None':
+                run(None)
+            else:
+                run(mode)
             end = time.perf_counter()
             exec_time.append(end-start)
             print('Makespan: {}'.format((end-start)))
